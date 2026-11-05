@@ -55,7 +55,7 @@
   :root {
     color-scheme: dark;
     --bg:#101013; --surface:#17171b; --line:rgba(255,255,255,.075);
-    --ink:#fff; --ink-2:#9d9da8; --ink-3:#5c5c67; --coral:#d9895f; --coral-dim:rgba(217,137,95,.16); --r:14px;
+    --ink:#fff; --ink-2:#9d9da8; --ink-3:#5c5c67; --coral:#fff; --coral-dim:rgba(255,255,255,.12); --r:14px;
   }
   * { box-sizing: border-box }
   body {
@@ -144,8 +144,8 @@
   .play:hover {
     transform: translateY(-3px); background: rgba(255,255,255,.085);
     box-shadow: inset 0 0 0 1px var(--coral),
-                0 11px 0 -3px rgba(217,137,95,.16),
-                0 22px 0 -7px rgba(217,137,95,.07),
+                0 11px 0 -3px rgba(255,255,255,.16),
+                0 22px 0 -7px rgba(255,255,255,.07),
                 0 28px 54px -26px rgba(0,0,0,.95);
   }
   .play svg { width: 22px; height: 22px; fill: currentColor }
@@ -179,8 +179,8 @@
   .vers button[aria-current="true"] {
     background: rgba(255,255,255,.07); color: #fff;
     box-shadow: inset 0 0 0 1px var(--coral),
-                0 6px 0 -2px rgba(217,137,95,.14),
-                0 12px 0 -5px rgba(217,137,95,.06) }
+                0 6px 0 -2px rgba(255,255,255,.14),
+                0 12px 0 -5px rgba(255,255,255,.06) }
 
   /* Two rows now instead of one, so each has to say what it is. Without a label,
      a row reading "Drums / Guitar / Piano" looks like alternative mixes rather
@@ -218,8 +218,8 @@
   .dl a:hover {
     transform: translateY(-3px); background: rgba(255,255,255,.085);
     box-shadow: inset 0 0 0 1px var(--coral),
-                0 11px 0 -3px rgba(217,137,95,.16),
-                0 22px 0 -7px rgba(217,137,95,.07),
+                0 11px 0 -3px rgba(255,255,255,.16),
+                0 22px 0 -7px rgba(255,255,255,.07),
                 0 28px 54px -26px rgba(0,0,0,.95);
   }
 
@@ -250,7 +250,45 @@
   .lede { font-size: 21px; font-weight: 620; letter-spacing: -.02em; margin: 0 0 10px }
   .hint { color: rgba(255,255,255,.45); font-size: 14.5px; max-width: 330px;
           margin: 0 auto; line-height: 1.6 }
-  @media (prefers-color-scheme: light) { .brand { filter: none } }
+  /* ── Or, 5.11.2026: "תנסה לעצב את זה יותר יפה". Flatter and calmer, in the site's own
+     language: square-ish corners (buttons 4, windows 6), one white primary action, quiet
+     outlined chips, no stacked "3D" shadows, no boxes around the chip rows. ── */
+  .card { max-width: 480px }
+  h1 { font-size: 30px; line-height: 1.15; margin: 26px 0 8px; font-weight: 650; letter-spacing: -.025em }
+  .album { font-size: 15px; color: rgba(255,255,255,.72) }
+  .meta { font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 26px }
+  .wave { height: 72px }
+  .times { margin-bottom: 18px }
+  .play { width: 58px; height: 58px; background: #fff; color: #0e0e11;
+          -webkit-backdrop-filter: none; backdrop-filter: none;
+          box-shadow: 0 10px 30px -12px rgba(0,0,0,.7);
+          transition: transform .3s cubic-bezier(.16,1,.3,1), background .2s }
+  .play:hover { transform: scale(1.05); background: #e9e9ee; box-shadow: 0 10px 30px -12px rgba(0,0,0,.7) }
+  .play svg { width: 20px; height: 20px }
+  .grouplbl { margin: 30px 0 12px; font-size: 11px; letter-spacing: .14em; color: rgba(255,255,255,.4) }
+  .vers, .vers.stems { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 0;
+                       padding: 0; border: 0; border-radius: 0; background: none;
+                       -webkit-backdrop-filter: none; backdrop-filter: none }
+  .vers button { font-size: 13px; padding: 7px 13px; border-radius: 4px; color: rgba(255,255,255,.72);
+                 box-shadow: inset 0 0 0 1px rgba(255,255,255,.12) }
+  .vers button:hover { color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.3) }
+  .vers button[aria-current="true"] { background: #fff; color: #0e0e11; box-shadow: none }
+  .vers.stems button { font-size: 12.5px; padding: 6px 11px; text-transform: lowercase; color: rgba(255,255,255,.6) }
+  .vers.stems button::first-letter { text-transform: uppercase }
+  /* the chosen stem keeps readable dark letters on its white chip (the stem colour rule outranked it) */
+  .vers.stems button[aria-current="true"] { color: #0e0e11 }
+  .dl { margin-top: 34px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap }
+  .dl a { padding: 12px 20px; border-radius: 4px; font-size: 14.5px; font-weight: 600;
+          -webkit-backdrop-filter: none; backdrop-filter: none;
+          background: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,.22) }
+  .dl a:first-child { background: #fff; color: #0e0e11; box-shadow: none }
+  .dl a:hover { transform: none; background: rgba(255,255,255,.08); box-shadow: inset 0 0 0 1px rgba(255,255,255,.4) }
+  .dl a:first-child:hover { background: #e9e9ee; box-shadow: none }
+  .dl a:first-child span { color: inherit }
+  .foot { margin-top: 26px; line-height: 1.75 }
+  @media (prefers-color-scheme: light) {
+    /* Or, 5.11.2026: no orange on the page a customer receives; the accent is the ink */
+    :root { --coral:#14141a; --coral-dim:rgba(0,0,0,.08) } .brand { filter: none } }
 
   @media (prefers-color-scheme: light) {
     body { background: radial-gradient(120% 90% at 50% 0%, #fff 0%, #f1f1f4 62%);
@@ -284,6 +322,23 @@
                    border-color: rgba(0,0,0,.11) }
     .vers button[aria-current="true"] { background: rgba(0,0,0,.06); color: #14141a;
       box-shadow: inset 0 0 0 1px var(--coral) }
+  }
+  /* the 5.11.2026 look on a light page: same shapes, dark ink */
+  @media (prefers-color-scheme: light) {
+    .topmark img { filter: invert(1) }
+    .album { color: #44444f } .meta { color: #6d6d7b }
+    .grouplbl { color: #6d6d7b }
+    .vers, .vers.stems { background: none; border: 0 }
+    .vers button, .vers.stems button { color: #3a3a46; background: none; box-shadow: inset 0 0 0 1px rgba(0,0,0,.14) }
+    .vers button:hover { color: #0e0e11; box-shadow: inset 0 0 0 1px rgba(0,0,0,.32) }
+    .vers button[aria-current="true"] { background: #14141a; color: #fff; box-shadow: none }
+    .vers.stems button[aria-current="true"] { color: #fff }
+    .play { background: #14141a; color: #fff; box-shadow: 0 10px 26px -14px rgba(0,0,0,.45) }
+    .play:hover { background: #2a2a33; box-shadow: 0 10px 26px -14px rgba(0,0,0,.45) }
+    .dl a { background: none; color: #14141a; box-shadow: inset 0 0 0 1px rgba(0,0,0,.2) }
+    .dl a:first-child { background: #14141a; color: #fff; box-shadow: none }
+    .dl a:hover { background: rgba(0,0,0,.05); box-shadow: inset 0 0 0 1px rgba(0,0,0,.35) }
+    .dl a:first-child:hover { background: #2a2a33 }
   }
 </style>
 </head>
@@ -417,6 +472,24 @@ function drawWave(canvas, data, progress) {
 let audio, canvas, wrap, data = null, objectUrl = null, _ac = null;
 let audioLoad = 0, pageLoad = 0, ticking = false;
 let cancelPendingAudio = null;
+/* Or, 5.11.2026: "כשאני עובר בין הגרסאות ולוחץ פליי יש delay". Two waits made every switch
+   slow: the waveform JSON was fetched only on the click, and the audio started loading only
+   on the click. Both are fetched ahead now: the waveform of every version once the page is
+   up, the audio of a version as soon as the pointer reaches its button (and the versions,
+   not the stems, quietly after the first one plays). A click then usually swaps at once. */
+const waveCache = new Map(), warmAudio = new Map(), lateWaves = new Map();
+function waveFor(core, version){
+  const k = core + "/" + version;
+  if (!waveCache.has(k)) waveCache.set(k, fetch(API + "/player-data/" + k, {credentials:"omit"})
+    .then(r => r.ok ? r.json() : null).catch(() => null));
+  return waveCache.get(k);
+}
+function warm(core, version){
+  const k = core + "/" + version;
+  if (warmAudio.has(k) || warmAudio.size > 40) return;
+  const a = new Audio(); a.preload = "auto"; a.src = audioUrl(core, version);
+  warmAudio.set(k, a); waveFor(core, version);
+}
 // A source replacement pauses the element without a user pause. Keep the
 // requested transport state across overlapping version fetches and decoders.
 let playbackWanted = false;
@@ -491,7 +564,9 @@ async function loadSelectedAudio(core, version, ownsPage = () => true, onReady =
   const status = document.getElementById("audio-status");
   if (status) status.textContent = "";
   targetWrap.classList.add("loading");
-  const candidate = new Audio(), controller = new AbortController();
+  const warmKey = core + "/" + version, warmed = warmAudio.get(warmKey);
+  if (warmed) warmAudio.delete(warmKey);
+  const candidate = warmed || new Audio(), controller = new AbortController();
   let readyTimer, waveTimer, finishReady, committed = false, succeeded = false;
   const ready = new Promise(resolve => { finishReady = resolve; });
   const finish = ok => {
@@ -501,6 +576,7 @@ async function loadSelectedAudio(core, version, ownsPage = () => true, onReady =
     finishReady(ok);
   };
   const onCanPlay = () => finish(Number.isFinite(candidate.duration) && candidate.duration > 0);
+  // a warmed copy may already be ready: no event will come, so answer now
   const onError = () => finish(false);
   const cancel = () => {
     controller.abort(); clearTimeout(waveTimer); finish(false);
@@ -511,36 +587,51 @@ async function loadSelectedAudio(core, version, ownsPage = () => true, onReady =
   candidate.addEventListener("canplay", onCanPlay);
   candidate.addEventListener("error", onError);
   readyTimer = setTimeout(onError, 12000);
+  if (candidate.readyState >= 3 && Number.isFinite(candidate.duration) && candidate.duration > 0) setTimeout(onCanPlay, 0);
   waveTimer = setTimeout(() => controller.abort(), 4000);
-  const waveRequest = fetch(API + "/player-data/" + core + "/" + version,
-    {signal:controller.signal, credentials:"omit"})
-    .then(r => r.ok ? r.json() : null)
+  const waveRequest = Promise.race([waveFor(core, version),
+      new Promise((_, no) => controller.signal.addEventListener("abort", () => no(new Error("abort"))))])
     .then(payload => measuredWave(payload, core, version))
     .catch(() => null)
     .finally(() => clearTimeout(waveTimer));
-  candidate.src = audioUrl(core, version);
+  if (!warmed) candidate.src = audioUrl(core, version);
+  candidate.dataset.k = warmKey;
   try {
     const wave = await waveRequest;
     if (!owns()) return false;
-    if (!wave) {
-      // Missing snapshot coverage must not remove a waveform that worked before.
-      // Stop the speculative stream before the single-download decode fallback.
+    // Or, 5.11.2026 ("המעבר בסטמים עובר לאט"): a version without a stored waveform (the stems)
+    // used to stop the stream, download the whole file and decode it before a note played. Now
+    // the sound starts as soon as it can play, and the waveform is drawn from the file afterwards.
+    const late = !wave;
+    if (!await ready || !owns() || candidate.error || candidate.readyState < 3) {
+      if (!late || !owns()) return false;
       cancel();
       const loaded = await loadAudio(audioUrl(core, version), ownsPage, onReady, request);
       succeeded = !!loaded;
       return loaded;
     }
-    if (!await ready || !owns() || candidate.error || candidate.readyState < 3) return false;
     candidate.id = "a";
     candidate.volume = target.volume; candidate.muted = target.muted;
     // Swap all ownership together. Old pause/error events are guarded by media
     // identity and cannot erase the latest explicit Play/Pause intent.
     audio = candidate; committed = succeeded = true; bindAudio(pageLoad);
     target.replaceWith(candidate);
-    target.pause(); target.removeAttribute("src"); target.load();
+    // the version left behind stays loaded, so going back to it is instant too
+    target.pause();
+    if (target.dataset.k && !objectUrl && !warmAudio.has(target.dataset.k)) { target.removeAttribute("id"); target.currentTime = 0; warmAudio.set(target.dataset.k, target); }
+    else { target.removeAttribute("src"); target.load(); }
     if (objectUrl) URL.revokeObjectURL(objectUrl);
-    objectUrl = null; data = wave;
+    objectUrl = null; data = late ? (lateWaves.get(core + "/" + version) || []) : wave;
     onReady(); drawWave(canvas, data, 0);
+    if (late && !data.length) {
+      const mine = candidate, key = core + "/" + version;
+      fetch(audioUrl(core, version), {credentials:"omit"}).then(r => r.ok ? r.arrayBuffer() : null)
+        .then(b => b && ctx().decodeAudioData(b)).then(d => {
+          if (!d) return;
+          const w = peaks(d, BARS); lateWaves.set(key, w);
+          if (audio === mine) { data = w; drawWave(canvas, data, audio.duration ? audio.currentTime / audio.duration : 0); }
+        }).catch(() => {});
+    }
     return request;
   } finally {
     if (cancelPendingAudio === cancel) cancelPendingAudio = null;
@@ -722,9 +813,9 @@ async function main() {
           esc(s.t)}</button>`).join("")}</div>` : ""}
     <audio id="a" preload="auto"></audio>
     <p class="dl"><a id="dl" download>Download this version <span>&darr;</span></a> <a id="dlw" hidden>WAV <span>&darr;</span></a></p>
-    <p class="foot"><span class="wm">Listen freely — no watermark.</span><br>
+    <p class="foot"><span class="wm">Listen freely, no watermark.</span><br>
       Sign in with Google or email to download the selected version.<br>
-      A license is still required for release &mdash;
+      A license is still required for release:
       <a href="https://ainsof.io">ainsof.io</a></p>`;
 
   audio  = document.getElementById("a");
@@ -757,19 +848,25 @@ async function main() {
     const dl = document.getElementById("dl");
     if (!dl) return;
     const base = `https://ainsof.io/download?t=${encodeURIComponent(core)}&version=${encodeURIComponent(v || "MAIN")}&from=play`;
-    dl.textContent = `Download ${label(v)} MP3 \u2014 sign in`;
+    dl.textContent = `Download ${label(v)} MP3 · sign in`;
     dl.href = base;
     dl.removeAttribute("download");
     const w = document.getElementById("dlw");
     if (!w) return;
     w.hidden = false;
-    w.textContent = "WAV \u2014 sign in";
+    w.textContent = "WAV · sign in";
     w.href = `${base}&format=wav`;
   };
   setDl(start);
 
   document.querySelectorAll("[data-v]").forEach((b) => {
+    const pre = () => warm(s, b.dataset.v);
+    b.addEventListener("pointerenter", pre); b.addEventListener("focus", pre);
+    b.addEventListener("touchstart", pre, {passive: true});
     b.onclick = async () => {
+      // the choice shows at once; the sound follows as soon as it is ready
+      document.querySelectorAll("[data-v]").forEach((x) => x.removeAttribute("aria-current"));
+      b.setAttribute("aria-current", "true");
       const loaded = await loadSelectedAudio(s, b.dataset.v, () => page === pageLoad, () => {
         document.querySelectorAll("[data-v]").forEach((x) => x.removeAttribute("aria-current"));
         b.setAttribute("aria-current", "true");
@@ -792,6 +889,20 @@ async function main() {
   // waveform and a large play button are unmistakably a player — which is what
   // the blank tab this replaced was missing.
   if (loaded) await resumeAudio(loaded, page);
+  // the other versions' waveforms and sound, quietly, once the first one is playing (not the stems)
+  if (loaded) setTimeout(() => {
+    document.querySelectorAll(".vers:not(.stems) [data-v]").forEach((b, i) => {
+      waveFor(s, b.dataset.v);
+      if (b.dataset.v !== start) setTimeout(() => warm(s, b.dataset.v), 400 * i);
+    });
+    // Or, 5.11.2026: "המעבר בסטמים עובר לאט": the stems are made ready too, after the versions
+    const nv = document.querySelectorAll(".vers:not(.stems) [data-v]").length;
+    document.querySelectorAll(".vers.stems [data-v]").forEach((b, i) => {
+      waveFor(s, b.dataset.v);
+      setTimeout(() => warm(s, b.dataset.v), 400 * (nv + i));
+    });
+  }, 1200);
+  if (loaded) {}
   else if (initialRequest === audioLoad && page === pageLoad && audio.paused) {
     playbackWanted = false; paintPlayback();
   }
