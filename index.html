@@ -201,26 +201,20 @@
   .dl a[hidden] { display: none }
   .dl a {
     display: inline-flex; align-items: center; gap: 12px;
-    padding: 13px 24px; border-radius: 13px;
+    padding: 13px 24px; border-radius: 6px;
     background: rgba(255,255,255,.055); -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     color: #fff; text-decoration: none; border: 0;
     font: inherit; font-weight: 500; font-size: 15.5px; letter-spacing: -.02em;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.15),
-                0 9px 0 -3px rgba(255,255,255,.05),
-                0 18px 0 -7px rgba(255,255,255,.028),
-                0 22px 46px -26px rgba(0,0,0,.9);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.12);
     transition: transform .42s var(--ease, cubic-bezier(.16,1,.3,1)),
                 box-shadow .42s var(--ease, cubic-bezier(.16,1,.3,1)),
                 background .42s var(--ease, cubic-bezier(.16,1,.3,1));
   }
   .dl a span { color: var(--coral) }
   .dl a:hover {
-    transform: translateY(-3px); background: rgba(255,255,255,.085);
-    box-shadow: inset 0 0 0 1px var(--coral),
-                0 11px 0 -3px rgba(255,255,255,.16),
-                0 22px 0 -7px rgba(255,255,255,.07),
-                0 28px 54px -26px rgba(0,0,0,.95);
+    transform: none; background: rgba(255,255,255,.085);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.32);
   }
 
   /* ⚠️ Was rgba(255,255,255,.38) — 3.08:1 on this background, measured, against
@@ -278,7 +272,7 @@
   /* the chosen stem keeps readable dark letters on its white chip (the stem colour rule outranked it) */
   .vers.stems button[aria-current="true"] { color: #0e0e11 }
   .dl { margin-top: 34px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap }
-  .dl a { padding: 12px 20px; border-radius: 4px; font-size: 14.5px; font-weight: 600;
+  .dl a { padding: 12px 20px; border-radius: 6px; font-size: 14.5px; font-weight: 600;
           -webkit-backdrop-filter: none; backdrop-filter: none;
           background: none; box-shadow: inset 0 0 0 1px rgba(255,255,255,.22) }
   .dl a:first-child { background: #fff; color: #0e0e11; box-shadow: none }
